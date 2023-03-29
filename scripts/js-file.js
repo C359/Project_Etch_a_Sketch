@@ -1,21 +1,34 @@
 
-let boardSize = 0;
+
 
 const gameCont = document.querySelector('.game-container');
 
+const playBtn = document.getElementById('btn');
+
+playBtn.addEventListener('click', getBoardSize);
+
+
 //prompt user for board size
-while (true) {
-    if (!(boardSize >= 1) || !(boardSize <= 100) || isNaN(boardSize)) {
-        boardSize = prompt("Enter a number between 1 and 100: ")
-    }
-    else {
-        setupBoard(boardSize);
-        break;
-    }
-} 
+function getBoardSize() {
+
+    let boardSize = 0;
+
+    while (true) {
+        if (!(boardSize >= 1) || !(boardSize <= 100) || isNaN(boardSize)) {
+            boardSize = prompt("Enter a number between 1 and 100: ")
+        }
+        else {
+            setupBoard(boardSize);
+            break;
+        }
+    } 
+}
 
 //create board with x and y dimensions
 function setupBoard(size) {
+
+    //clear board if setup already
+    if(gameCont.childElementCount != 0) {gameCont.replaceChildren()}
 
     const paddingRoom = 16 * size
     const dimension = (960 - paddingRoom) / size;
@@ -38,7 +51,7 @@ function setupBoard(size) {
 
         gameCont.appendChild(square);
     }
-}
 
+}
 
 
