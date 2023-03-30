@@ -42,12 +42,19 @@ function setupBoard(size) {
         square.style.height = dimensionPx;
 
         square.addEventListener('mouseover', (e) => {
-            e.target.classList.toggle('tile-on');
+            let currentBg = window.getComputedStyle(e.target).backgroundColor
+            let rgbCol = currentBg.match(/\d+/g);
+            let colVal = Math.floor(+rgbCol[0] * 0.9)
+            let newBg = `rgb(${colVal},${colVal},${colVal})`
+
+            e.target.style.backgroundColor = newBg;
+            console.log(colVal);
+           
         });
 
-        square.addEventListener('mouseleave', (e) => {
+        /*square.addEventListener('mouseleave', (e) => {
             e.target.classList.toggle('tile-on');
-        });
+        });*/
 
         gameCont.appendChild(square);
     }
