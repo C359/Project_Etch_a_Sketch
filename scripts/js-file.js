@@ -30,7 +30,7 @@ function setupBoard(size) {
     //clear board if setup already
     if(gameCont.childElementCount != 0) {gameCont.replaceChildren()}
 
-    const paddingRoom = 16 * size
+    const paddingRoom = 12 * size
     const dimension = (600 - paddingRoom) / size;
     const dimensionPx = dimension + "px";
 
